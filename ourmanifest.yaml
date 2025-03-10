@@ -1,0 +1,24 @@
+releasever: eln
+
+repos:
+  - baseos
+  - appstream
+
+variables:
+  distro: "fedoraeln"
+
+packages:
+  - fedora-repos-eln
+
+postprocess:
+  - |
+    #!/usr/bin/env bash
+    mkdir -p /usr/lib/bootc/install/
+    cat > /usr/lib/bootc/install/20-rhel.toml << EOF
+    [install]
+    root-fs-type = "xfs"
+    EOF
+
+include:
+  - fedora-bootc-legacy/tier-1/kernel.yaml
+  - fedora-bootc-legacy/tier-1/manifest.yaml
