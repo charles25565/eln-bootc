@@ -93,8 +93,8 @@ jobs:
       - name: Add x86_64 to manifest
         run: podman manifest add eln-bootc-manifest oci:$(pwd)/oci-x86_64
       - name: Login
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         run: echo ${{secrets.GITHUB_TOKEN}} | podman login -u ${{github.actor}} --password-stdin ghcr.io
       - name: Push
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         run: podman manifest push eln-bootc-manifest docker://ghcr.io/charles8191/eln-bootc:latest
