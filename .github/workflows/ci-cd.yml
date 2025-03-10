@@ -95,6 +95,6 @@ jobs:
       - name: Login
         if: github.event_name != 'pull_request'
         run: echo ${{secrets.GITHUB_TOKEN}} | podman login -u ${{github.actor}} --password-stdin ghcr.io
-      - name: Push latest
-        if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+      - name: Push
+        if: github.event_name != 'pull_request'
         run: podman manifest push eln-bootc-manifest docker://ghcr.io/charles8191/eln-bootc:latest
