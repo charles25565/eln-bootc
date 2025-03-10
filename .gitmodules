@@ -1,3 +1,0 @@
-[submodule "fedora-bootc-legacy"]
-	path = fedora-bootc-legacy
-	url = https://gitlab.com/fedora/bootc/base-images.git
