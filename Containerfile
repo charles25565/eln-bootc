@@ -7,6 +7,7 @@ RUN /usr/libexec/bootc-base-imagectl build-rootfs --manifest=standard /out
 FROM scratch AS eln-bootc
 COPY --from=builder /out /
 LABEL containers.bootc 1
+LABEL ostree.bootable true
 LABEL bootc.diskimage-builder quay.io/centos-bootc/bootc-image-builder
 STOPSIGNAL SIGRTMIN+3
 CMD ["/sbin/init"]
