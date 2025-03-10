@@ -1,5 +1,7 @@
 # eln-bootc
 
+[![CI/CD](https://github.com/charles8191/eln-bootc/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/charles8191/eln-bootc/actions/workflows/ci-cd.yml)
+
 Fedora ELN bootc images. These can be used like any other.
 
 ## Using
