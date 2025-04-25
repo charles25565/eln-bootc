@@ -20,8 +20,7 @@ jobs:
       - uses: actions/cache@v4
         id: cache
         with:
-          path: |
-            oci-aarch64/
+          path: oci-aarch64/
           key: ${{steps.get-arch.outputs.arch}}-${{steps.get-date.outputs.date}}-${{hashFiles('Containerfile', 'eln.repo')}}
       - name: Build
         if: steps.cache.outputs.cache-hit != 'true'
@@ -49,8 +48,7 @@ jobs:
       - uses: actions/cache@v4
         id: cache
         with:
-          path: |
-            oci-x86_64/
+          path: oci-x86_64/
           key: ${{steps.get-arch.outputs.arch}}-${{steps.get-date.outputs.date}}-${{hashFiles('Containerfile', 'eln.repo')}}
       - name: Build
         if: steps.cache.outputs.cache-hit != 'true'
