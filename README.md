@@ -10,4 +10,6 @@ Use the container URL: [`ghcr.io/charles25565/eln-bootc`](https://ghcr.io/charle
 
 ## Building
 
-Please use [these instructions](https://github.com/charles25565/rocky-bootc/?tab=readme-ov-file#building), just build as localhost/eln-bootc instead, and no need to switch branches.
+```bash
+sudo podman build --security-opt=label=disable --cap-add=all --device /dev/fuse -t localhost/eln-bootc:latest .
+```
