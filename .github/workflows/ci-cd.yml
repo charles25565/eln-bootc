@@ -23,11 +23,6 @@ jobs:
           path: |
             oci-aarch64/
           key: ${{steps.get-arch.outputs.arch}}-${{steps.get-date.outputs.date}}-${{hashFiles('Containerfile', 'eln.repo')}}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y podman
       - name: Build
         if: steps.cache.outputs.cache-hit != 'true'
         run: sudo podman build --security-opt=label=disable --cap-add=all --device /dev/fuse -t localhost/eln-bootc:aarch64 .
@@ -69,7 +64,9 @@ jobs:
           path: oci-x86_64/
   push:
     name: Push images
-    needs: [build_aarch64, build_x86_64]
+    needs: 
+      - build_aarch64
+      - build_x86_64
     runs-on: ubuntu-24.04
     steps:
       - name: Download aarch64
